@@ -1,0 +1,17 @@
+{
+    "name": "loots-it/laravel-address-model",
+    "keywords": [
+        "address",
+        "laravel",
+        "model"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Laurens Loots",
+            "email": "laurens@loots-it.be"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
