@@ -1,5 +1,6 @@
 {
     "name": "loots-it/laravel-address-model",
+    "description": "This package provides an Address Model, Migration and Factory. It also provides the traits HasBillingAddres and HasPublicAddress",
     "keywords": [
         "address",
         "laravel",
