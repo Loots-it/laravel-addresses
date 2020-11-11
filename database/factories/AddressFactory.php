@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use App\Models\Address;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use LootsIt\Address\Models\Address;
 
 class AddressFactory extends Factory
 {
