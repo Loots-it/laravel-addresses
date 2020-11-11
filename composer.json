@@ -20,5 +20,20 @@
         "watson/validating": "^6.0"
     },
     "require-dev": {
+    },
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "LootsIt\\Address\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "LootsIt\\Address\\Providers\\AddressServiceProvider"
+            ]
+        }
     }
 }
