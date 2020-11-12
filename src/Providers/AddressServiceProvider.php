@@ -13,7 +13,7 @@ class AddressServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([$this->getMigrationsPath() => database_path('migrations')], 'migrations');
+        $this->publishes([$this->getMigrationsPath() => database_path('migrations')], 'address-migrations');
     }
 
     private function getMigrationsPath()

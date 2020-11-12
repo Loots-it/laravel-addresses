@@ -12,8 +12,6 @@ trait HasPublicAddress
 {
     use HasAddress;
 
-    public Address $publicAddress;
-
     public function publicAddress(): BelongsTo
     {
         return $this->belongsTo(Address::class)->withDefault();

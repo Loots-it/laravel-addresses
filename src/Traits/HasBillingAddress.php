@@ -12,8 +12,6 @@ trait HasBillingAddress
 {
     use HasAddress;
 
-    public Address $billingAddress;
-
     public function billingAddress(): BelongsTo
     {
         return $this->belongsTo(Address::class)->withDefault();
