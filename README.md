@@ -1,1 +1,1 @@
-# laravel-address-model
+# laravel-addresses
