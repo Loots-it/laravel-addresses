@@ -2,6 +2,7 @@
 
 namespace LootsIt\Address\Models;
 
+use Database\Factories\AddressFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Watson\Validating\ValidatingTrait;
@@ -35,4 +36,14 @@ class Address extends Model
         'city' => 'nullable|string|max:150',
         'country_code' => 'nullable|alpha|size:2|country',
     ];
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return AddressFactory::new();
+    }
 }
