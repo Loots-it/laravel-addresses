@@ -1,0 +1,14 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use LootsIt\Address\Models\Address;
+
+class {{ class }} extends Address
+{
+    use HasFactory;
+
+    $this->primaryKey = {{ foreignId }};
+}

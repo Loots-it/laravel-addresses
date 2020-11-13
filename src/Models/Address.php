@@ -7,10 +7,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Watson\Validating\ValidatingTrait;
 
-class Address extends Model
+abstract class Address extends Model
 {
     use HasFactory;
     use ValidatingTrait;
+
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
 
     protected $fillable = ['street', 'house_number', 'bus_number', 'postal_code', 'city', 'country_code'];
 
@@ -36,14 +43,4 @@ class Address extends Model
         'city' => 'nullable|string|max:150',
         'country_code' => 'nullable|alpha|size:2|country',
     ];
-
-    /**
-     * Create a new factory instance for the model.
-     *
-     * @return \Illuminate\Database\Eloquent\Factories\Factory
-     */
-    protected static function newFactory()
-    {
-        return AddressFactory::new();
-    }
 }

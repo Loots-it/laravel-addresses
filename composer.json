@@ -18,9 +18,12 @@
         "illuminate/database": "^8.14",
         "php": "^7.4.0",
         "rinvex/countries": "^7.3",
-        "watson/validating": "^6.0"
+        "watson/validating": "^6.0",
+        "illuminate/console": "^8.14",
+        "laravel/tinker": "^2.5"
     },
     "require-dev": {
+        "laravel/framework": "^8.14"
     },
     "autoload": {
         "classmap": [
