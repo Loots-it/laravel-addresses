@@ -50,6 +50,10 @@ class AddressFactoryMakeCommand extends FactoryMakeCommand
     {
         $stub = parent::buildClass($name);
         $stub = str_replace('{{ foreignId }}', $this->option('foreign_id'), $stub);
+        $stub = str_replace(
+            '{{ namespacedForeignClass }}',
+            $this->qualifyModel($this->option('foreign_class')),
+            $stub);
         return str_replace('{{ foreignClass }}', $this->option('foreign_class'), $stub);
     }
 
