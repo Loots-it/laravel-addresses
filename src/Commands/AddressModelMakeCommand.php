@@ -13,7 +13,7 @@ class AddressModelMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $signature = 'make:address-model {name} {foreignId}';
+    protected $signature = 'make:address-model {name} {foreign_class} {foreign_id}';
 
     /**
      * The console command description.
@@ -53,7 +53,8 @@ class AddressModelMakeCommand extends GeneratorCommand
         $this->call("make:address-factory", [
             'name' => "{$factory}Factory",
             '--model' => $this->qualifyClass($this->getNameInput()),
-            '--foreign_id' => $this->argument('foreignId'),
+            '--foreign_class' => $this->argument('foreign_class'),
+            '--foreign_id' => $this->argument('foreign_id'),
         ]);
     }
 
@@ -78,7 +79,7 @@ class AddressModelMakeCommand extends GeneratorCommand
     protected function buildClass($name)
     {
         $stub = parent::buildClass($name);
-        return str_replace('{{ foreignId }}', $this->argument('foreignId'), $stub);
+        return str_replace('{{ foreignId }}', $this->argument('foreign_id'), $stub);
     }
 
     /**
@@ -90,18 +91,5 @@ class AddressModelMakeCommand extends GeneratorCommand
     protected function getDefaultNamespace($rootNamespace)
     {
         return is_dir(app_path('Models')) ? $rootNamespace.'\\Models' : $rootNamespace;
-    }
-
-    /**
-     * Get the console command options.
-     *
-     * @return array
-     */
-    protected function getOptions()
-    {
-        return [
-            ['force', null, InputOption::VALUE_NONE, 'Create the class even if the model already exists'],
-            ['foreign_id', null, InputOption::VALUE_REQUIRED, 'The foreign id that the new address model should reference to'],
-        ];
     }
 }

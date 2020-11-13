@@ -30,8 +30,8 @@ class AddressFactoryMakeCommand extends FactoryMakeCommand
      */
     public function handle()
     {
-        if (!$this->option('model') || !$this->option('foreign_id')) {
-            $this->error('The options --model and --foreign_id are mandatory');
+        if (!$this->option('model') || !$this->option('foreign_id') || !$this->option('foreign_class')) {
+            $this->error('The options --model, --foreign_id and --foreign_class are mandatory');
         }
 
         parent::handle();
@@ -49,7 +49,8 @@ class AddressFactoryMakeCommand extends FactoryMakeCommand
     protected function buildClass($name)
     {
         $stub = parent::buildClass($name);
-        return str_replace('{{ foreignId }}', $this->option('foreign_id'), $stub);
+        $stub = str_replace('{{ foreignId }}', $this->option('foreign_id'), $stub);
+        return str_replace('{{ foreignClass }}', $this->option('foreign_class'), $stub);
     }
 
     /**
@@ -71,6 +72,7 @@ class AddressFactoryMakeCommand extends FactoryMakeCommand
     {
         return [
             ['model', 'm', InputOption::VALUE_REQUIRED, 'The name of the model'],
+            ['foreign_class', null, InputOption::VALUE_REQUIRED, 'The foreign class for the address model'],
             ['foreign_id', null, InputOption::VALUE_REQUIRED, 'The foreign id in the address model'],
         ];
     }
