@@ -22,7 +22,7 @@ class {{ factory }}Factory extends Factory
     public function definition()
     {
         return [
-            '{{ foreignId }}' => {{ model }}::factory()
+            '{{ foreignId }}' => {{ model }}::factory(),
             'street' => $this->faker->streetName,
             'house_number' => $this->faker->numberBetween(1, 9999),
             'bus_number' => $this->faker->randomLetter,

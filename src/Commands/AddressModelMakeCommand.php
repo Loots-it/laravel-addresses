@@ -50,10 +50,10 @@ class AddressModelMakeCommand extends GeneratorCommand
     {
         $factory = Str::studly($this->argument('name'));
 
-        $this->call('make:address-factory', [
+        $this->call("make:address-factory", [
             'name' => "{$factory}Factory",
-            'model' => $this->qualifyClass($this->getNameInput()),
-            'foreignId' => $this->argument('foreignId'),
+            '--model' => $this->qualifyClass($this->getNameInput()),
+            '--foreign_id' => $this->argument('foreignId'),
         ]);
     }
 

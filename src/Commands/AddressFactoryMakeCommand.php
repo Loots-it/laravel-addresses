@@ -1,15 +1,16 @@
 <?php
 
 use Illuminate\Database\Console\Factories\FactoryMakeCommand;
+use Symfony\Component\Console\Input\InputOption;
 
 class AddressFactoryMakeCommand extends FactoryMakeCommand
 {
     /**
-     * The name and signature of the console command.
+     * The console command name.
      *
      * @var string
      */
-    protected $signature = 'make:address-factory {name} {model} {foreignId}';
+    protected $name = 'make:address-factory';
 
     /**
      * The console command description.
@@ -17,6 +18,23 @@ class AddressFactoryMakeCommand extends FactoryMakeCommand
      * @var string
      */
     protected $description = 'Create a new address model factory';
+
+    /**
+     * Execute the console command.
+     *
+     * @return bool|null
+     *
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    public function handle()
+    {
+        if (!$this->option('model') || !$this->option('foreign_id')) {
+            $this->error('The options --model and --foreign_id are mandatory');
+        }
+
+        parent::handle();
+    }
+
 
     /**
      * Build the class with the given name.
@@ -29,7 +47,7 @@ class AddressFactoryMakeCommand extends FactoryMakeCommand
     protected function buildClass($name)
     {
         $stub = parent::buildClass($name);
-        return str_replace('{{ foreignId }}', $this->argument('foreignId'), $stub);
+        return str_replace('{{ foreignId }}', $this->option('foreign_id'), $stub);
     }
 
     /**
@@ -40,5 +58,18 @@ class AddressFactoryMakeCommand extends FactoryMakeCommand
     protected function getStub()
     {
         return __DIR__.'/stubs/address-factory.stub';
+    }
+
+    /**
+     * Get the console command options.
+     *
+     * @return array
+     */
+    protected function getOptions()
+    {
+        return [
+            ['model', 'm', InputOption::VALUE_REQUIRED, 'The name of the model'],
+            ['foreign_id', null, InputOption::VALUE_REQUIRED, 'The foreign id in the address model'],
+        ];
     }
 }
