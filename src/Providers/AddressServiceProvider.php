@@ -3,7 +3,7 @@
 namespace LootsIt\Address\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use LootsIt\Addresses\Commands\AddressModelMakeCommand;
+use LootsIt\Address\Commands\AddressModelMakeCommand;
 
 class AddressServiceProvider extends ServiceProvider
 {

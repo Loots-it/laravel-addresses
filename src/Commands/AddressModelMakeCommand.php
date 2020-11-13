@@ -1,6 +1,6 @@
 <?php
 
-namespace LootsIt\Addresses\Commands;
+namespace LootsIt\Address\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
