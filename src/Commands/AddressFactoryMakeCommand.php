@@ -1,5 +1,7 @@
 <?php
 
+namespace LootsIt\Address\Commands;
+
 use Illuminate\Database\Console\Factories\FactoryMakeCommand;
 use Symfony\Component\Console\Input\InputOption;
 
