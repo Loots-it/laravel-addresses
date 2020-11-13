@@ -26,9 +26,6 @@
         "laravel/framework": "^8.14"
     },
     "autoload": {
-        "classmap": [
-            "database"
-        ],
         "psr-4": {
             "LootsIt\\Address\\": "src/"
         }
