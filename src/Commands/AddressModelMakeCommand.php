@@ -3,6 +3,7 @@
 namespace LootsIt\Address\Commands;
 
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
 
 class AddressModelMakeCommand extends GeneratorCommand
@@ -37,6 +38,23 @@ class AddressModelMakeCommand extends GeneratorCommand
     public function handle()
     {
         parent::handle();
+        $this->createFactory();
+    }
+
+    /**
+     * Create a model factory for the model.
+     *
+     * @return void
+     */
+    protected function createFactory()
+    {
+        $factory = Str::studly($this->argument('name'));
+
+        $this->call('make:address-factory', [
+            'name' => "{$factory}Factory",
+            'model' => $this->qualifyClass($this->getNameInput()),
+            'foreignId' => $this->argument('foreignId'),
+        ]);
     }
 
     /**

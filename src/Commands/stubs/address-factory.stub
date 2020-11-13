@@ -1,0 +1,34 @@
+<?php
+
+namespace {{ factoryNamespace }};
+
+use Illuminate\Database\Eloquent\Factories\Factory;
+use {{ namespacedModel }};
+
+class {{ factory }}Factory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = {{ model }}::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+            '{{ foreignId }}' => {{ model }}::factory()
+            'street' => $this->faker->streetName,
+            'house_number' => $this->faker->numberBetween(1, 9999),
+            'bus_number' => $this->faker->randomLetter,
+            'postal_code' => $this->faker->postcode,
+            'city' => $this->faker->city,
+            'country_code' => $this->faker->countryCode,
+        ];
+    }
+}
