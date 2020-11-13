@@ -8,11 +8,11 @@ use Symfony\Component\Console\Input\InputOption;
 class AddressModelMakeCommand extends GeneratorCommand
 {
     /**
-     * The console command name.
+     * The name and signature of the console command.
      *
      * @var string
      */
-    protected $name = 'make:address-model';
+    protected $signature = 'make:address-model {name} {foreignId}';
 
     /**
      * The console command description.
@@ -60,8 +60,7 @@ class AddressModelMakeCommand extends GeneratorCommand
     protected function buildClass($name)
     {
         $stub = parent::buildClass($name);
-        $foreignId = "";
-        return str_replace('{{ foreignId }}', $foreignId, $stub);
+        return str_replace('{{ foreignId }}', $this->argument('foreignId'), $stub);
     }
 
     /**
