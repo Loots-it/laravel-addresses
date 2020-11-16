@@ -24,6 +24,7 @@ class AddressServiceProvider extends ServiceProvider
 
     public function register()
     {
+        $this->registerCreator();
         $this->commands($this->commands);
     }
 
