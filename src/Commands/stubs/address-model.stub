@@ -3,7 +3,7 @@
 namespace {{ namespace }};
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use LootsIt\Address\Models\Address;
+use LootsIt\AddressModel\Address;
 
 class {{ class }} extends Address
 {
