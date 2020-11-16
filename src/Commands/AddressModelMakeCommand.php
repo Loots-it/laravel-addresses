@@ -39,6 +39,7 @@ class AddressModelMakeCommand extends GeneratorCommand
     {
         parent::handle();
         $this->createFactory();
+        $this->createMigration();
     }
 
     /**
@@ -54,6 +55,26 @@ class AddressModelMakeCommand extends GeneratorCommand
             'name' => "{$factory}Factory",
             '--model' => $this->qualifyClass($this->getNameInput()),
             '--foreign_class' => $this->argument('foreign_class'),
+            '--foreign_id' => $this->argument('foreign_id'),
+        ]);
+    }
+
+    /**
+     * Create a migration file for the model.
+     *
+     * @return void
+     */
+    protected function createMigration()
+    {
+        $table = Str::snake(Str::pluralStudly(class_basename($this->argument('name'))));
+
+        if ($this->option('pivot')) {
+            $table = Str::singular($table);
+        }
+
+        $this->call('make:address-migration', [
+            'name' => "create_{$table}_table",
+            '--create' => $table,
             '--foreign_id' => $this->argument('foreign_id'),
         ]);
     }
