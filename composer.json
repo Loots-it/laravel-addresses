@@ -17,15 +17,15 @@
     "prefer-stable": true,
     "require": {
         "illuminate/database": "^8.14",
-        "php": "^7.4.0|^8.0",
+        "php": "^8.0",
         "rinvex/countries": "^7.3",
-        "watson/validating": "^6.0",
+        "watson/validating": "^7.0",
         "illuminate/console": "^8.14",
         "laravel/tinker": "^2.5"
     },
     "require-dev": {
         "laravel/framework": "^8.14",
-        "loots-it/address-model": "^1.0@alpha"
+        "loots-it/address-model": "^2.1"
     },
     "autoload": {
         "psr-4": {
